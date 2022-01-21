@@ -1,0 +1,76 @@
+/// 1 )
+
+PROCEDURE point_produit(v1,v2 : ARRAY_OF INTEGER, VAR point : INTEGER)
+VAR
+    i : ENTIER ;
+COMMENCER
+    point :=0;
+    je :=0 ;
+    SI (v1.longueur <> v2.longueur) ALORS
+        Write("vecteurs de tailles différentes, nous ne pouvons pas calculer le produit scalaire");
+        point := NaN; // NaN : nombre non défini
+    FIN SI
+    TANTQUE (i <v1.longueur ) FAIRE
+        point := point + v1[i]*v2[i] ;
+    END_WHILE
+FINIR
+// 2) 
+ALGORITHME orth_vectors
+VAR
+    v1,v2 : ARRAY_OF INTEGER [50] ;
+    point : INTEGER ;
+COMMENCER
+    // Lecture de la taille des éléments de V1 
+    n1 := read_size();
+    // Lecture des éléments de V1
+    read_array(n1,v1);
+    // Lecture de la taille des éléments de V2 
+    n2 := read_size();
+    // Lecture des éléments de V2
+    read_array(n2,v2);
+    point_produit(v1,v2,point);
+    SI (point = 0) ALORS
+        Write("V1 et V2 sont orthogonaux");
+    AUTRE
+        Write("V1 et V2 ne sont pas orthogonaux");
+    FIN SI
+FINIR
+
+// 3)
+
+FONCTION dot_product(v1,v2 : ARRAY_OF INTEGER) : INTEGER
+VAR
+    i, point : INTEGER ;
+COMMENCER
+    point :=0;
+    je :=0 ;
+    SI (v1.longueur <> v2.longueur) ALORS
+        Write("vecteurs de tailles différentes, nous ne pouvons pas calculer le produit scalaire");
+        RETOUR NaN; // NaN : nombre non défini
+    FIN SI
+    TANTQUE (i <v1.longueur ) FAIRE
+        point := point + v1[i]*v2[i] ;
+    END_WHILE
+    Point RETOUR ;
+FINIR
+
+ALGORITHME orth_vectors
+VAR
+    v1,v2 : ARRAY_OF INTEGER [50] ;
+    point : INTEGER ;
+COMMENCER
+    // Lecture de la taille des éléments de V1 
+    n1 := read_size();
+    // Lecture des éléments de V1
+    read_array(n1,v1);
+    // Lecture de la taille des éléments de V2 
+    n2 := read_size();
+    // Lecture des éléments de V2
+    read_array(n2,v2);
+    point := produit_point(v1,v2);
+    SI (point = 0) ALORS
+        Write("V1 et V2 sont orthogonaux");
+    AUTRE
+        Write("V1 et V2 ne sont pas orthogonaux");
+    FIN SI
+FINIR
